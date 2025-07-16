@@ -21,7 +21,7 @@ A simple and responsive calculator built with HTML, CSS, and JavaScript. This pr
 ## How to Use
 
 1. **Enter two numbers** into the input fields labeled "Number 1" and "Number 2".
-2. **Click one of the operation buttons** (+, −, ×, ÷, ^, √) to perform the desired calculation.
+2. **Click one of the operation buttons** (+, −, ×, ÷) to perform the desired calculation.
 3. **The result will be displayed** below the buttons.
 
 ## Operations
@@ -30,8 +30,6 @@ A simple and responsive calculator built with HTML, CSS, and JavaScript. This pr
 - **Subtraction (−)**: Subtracts the second number from the first.
 - **Multiplication (×)**: Multiplies the two numbers.
 - **Division (÷)**: Divides the first number by the second.
-- **Exponentiation (^)**: Raises the first number to the power of the second number.
-- **Square Root (√)**: Calculates the square root of the first number.
 
 
 
