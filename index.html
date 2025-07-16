@@ -1,209 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Calculator</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: rgb(205, 225, 234);
-            transition: background-color 0.3s ease;
-        }
-        .calculator {
-            background: linear-gradient(135deg);
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            padding: 2rem;
-            width: 350px;
-            backdrop-filter: blur(10px);
-            color: #4a4a4a;
-            transition: color 0.3s ease;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #4a4a4a;
-            font-size: 1.8rem;
-        }
-        .input-group {
-            margin-bottom: 1rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #888;
-            font-weight: bold;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            color: #333;
-            background: linear-gradient(135deg, #f8f9fa, #e0e5ec);
-            box-shadow: inset 2px 4px 8px rgba(0, 0, 0, 0.1);
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        input[type="text"]:focus {
-            background: #e6e8ec;
-            box-shadow: inset 2px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .button-group {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 1rem;
-        }
-        button {
-            height: 80px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #e329cd, #dc29df);
-            color: #e5dee4;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        button:hover {
-            background: linear-gradient(135deg, #eb20cd, #c20a7c);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        #result {
-            text-align: center;
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #4a4a4a;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.8rem;
-            border-radius: 10px;
-            margin-top: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Dark Theme Styles */
-        body.dark-mode {
-            background-color: #121212;
-        }
-
-        .calculator.dark-mode {
-            background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-            color: #f8f9fa;
-        }
-
-        .calculator.dark-mode button {
-            background: linear-gradient(135deg, #6f3b98, #532b7d);
-            color: #f8f9fa;
-        }
-
-        .calculator.dark-mode input[type="text"] {
-            background: #333;
-            color: #f8f9fa;
-            box-shadow: inset 2px 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .calculator.dark-mode #result {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: #f8f9fa;
-        }
-
-        .calculator.dark-mode label {
-            color: #ddd;
-        }
-
-        .calculator.dark-mode input[type="text"] {
-            color: #f8f9fa;
-        }
-
-        /* Dark Theme Toggle Button */
-        #theme-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #ff4500;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #theme-toggle:hover {
-            background-color: #ff6347;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Genius Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <h1>Simple Calculator</h1>
-        <div class="input-group">
-            <label for="num1">Number 1:</label>
-            <input type="text" id="num1" placeholder="Enter first number">
-        </div>
-        <div class="input-group">
-            <label for="num2">Number 2:</label>
-            <input type="text" id="num2" placeholder="Enter second number">
-        </div>
-        <div class="button-group">
-            <button onclick="performOperation('add')">+</button>
-            <button onclick="performOperation('sub')">−</button>
-            <button onclick="performOperation('mul')">×</button>
-            <button onclick="performOperation('div')">÷</button>
-            <button onclick="performOperation('mod')">%</button> <!-- Modulus button -->
-            <button onclick="performOperation('exp')">^</button> <!-- Exponentiation button -->
-        </div>
-        <div id="result">Result: </div>
+  <div class="calculator">
+    <div class="display" id="display"></div>
+    <div class="buttons">
+      <button class="btn">7</button>
+      <button class="btn">8</button>
+      <button class="btn">9</button>
+      <button class="btn operator">/</button>
+
+      <button class="btn">4</button>
+      <button class="btn">5</button>
+      <button class="btn">6</button>
+      <button class="btn operator">*</button>
+
+      <button class="btn">1</button>
+      <button class="btn">2</button>
+      <button class="btn">3</button>
+      <button class="btn operator">-</button>
+
+      <button class="btn">0</button>
+      <button class="btn">.</button>
+      <button class="btn" id="equals">=</button>
+      <button class="btn operator">+</button>
+
+      <button class="btn clear" id="clear">Clear</button>
     </div>
-    <button id="theme-toggle" onclick="toggleTheme()">🌙</button>
+  </div>
 
-    <script>
-        function performOperation(operation) {
-            let num1 = parseFloat(document.getElementById("num1").value);
-            let num2 = parseFloat(document.getElementById("num2").value);
-            let result = 0;
-
-            switch (operation) {
-                case 'add':
-                    result = num1 + num2;
-                    break;
-                case 'sub':
-                    result = num1 - num2;
-                    break;
-                case 'mul':
-                    result = num1 * num2;
-                    break;
-                case 'div':
-                    result = num1 / num2;
-                    break;
-                case 'mod':
-                    result = num1 % num2; // Modulus operation
-                    break;
-                case 'exp':
-                    result = Math.pow(num1, num2); // Exponentiation operation
-                    break;
-                default:
-                    result = 'Invalid Operation';
-            }
-
-            document.getElementById("result").textContent = "Result: " + result;
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            document.querySelector('.calculator').classList.toggle('dark-mode');
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
